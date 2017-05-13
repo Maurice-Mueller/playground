@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <h1>This is HOME.</h1>
