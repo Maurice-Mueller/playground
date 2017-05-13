@@ -9,7 +9,7 @@ Vue.use(VueRouter); //add router plugin to main vue
 Vue.component('app-message', Message)
 
 const routes = [
-  {path: '/users', component: Users},
+  {path: '/users/:teamId', component: Users},
   {path: '/home', component: Home},
 ]
 
