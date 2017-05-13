@@ -14,7 +14,8 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  routes //if the value and valuename are equal, you can use this short writing (it's short for routes: routes)
+  routes, //if the value and valuename are equal, you can use this short writing (it's short for routes: routes)
+  mode: 'history' //if the browser is set to load index.html at 404, you can use the history mode for the router which will eleminate the # at the end of the url
 });
 
 new Vue({
