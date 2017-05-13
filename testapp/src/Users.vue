@@ -2,6 +2,7 @@
   <div>
     <h1>This is the users page.</h1>
     <h3>Team ID is {{$route.params.teamId}}</h3>
+    <button @click="goHome">GO HOME</button>
   </div>
 </template>
 
@@ -16,6 +17,11 @@
     created() {
         console.log('users got created');
         alert(this.$route.params.teamId);
+    },
+    methods: {
+      goHome() {
+        this.$router.push('/home');
+      }
     }
   }
 </script>
