@@ -1,6 +1,7 @@
 <template>
   <div>
-    <input type='text' v-model='inputText'>
+    <p>{{msg}}</p>
+    <input type='text' :value='msg' @input="changeMsg">
     <p>{{inputText}}</p>
   </div>
 </template>
@@ -10,6 +11,15 @@
     data() {
       return {
         inputText: ''
+      }
+    },
+    props: [
+      'msg'
+    ],
+    methods: {
+      changeMsg(event) {
+        this.inputText = event.target.value;
+        this.$emit('messageChanged', this.inputText);
       }
     }
   }
