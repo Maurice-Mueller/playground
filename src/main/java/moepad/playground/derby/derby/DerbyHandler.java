@@ -8,8 +8,10 @@ public final class DerbyHandler {
 
   private final DerbyConnection connection;
 
-  public DerbyHandler(String dbName) {
+  public DerbyHandler(String dbName, boolean destroyDBOnShutdown) {
     connection = new DerbyConnection(dbName);
+    if(destroyDBOnShutdown)
+      addShutdownHook(dbName);
   }
 
   public void execute(String sqlStatement) {
@@ -28,5 +30,9 @@ public final class DerbyHandler {
     MyResultSet resultSet = MyResultSetFactory.fromResultSet(statement.executeQuery(query));
     statement.close();
     return resultSet;
+  }
+
+  private void addShutdownHook(String dbName) {
+    Runtime.getRuntime().addShutdownHook(new DerbyShutdownThread(dbName));
   }
 }

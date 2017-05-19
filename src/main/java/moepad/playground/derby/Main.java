@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public final class Main {
 
-  private static final DerbyHandler derbyHandler = new DerbyHandler("exampleDB");
+  private static final DerbyHandler derbyHandler = new DerbyHandler("exampleDB", true);
   private static final Scanner scanner = new Scanner(System.in);
 
   public static void main(String[] args) {

@@ -14,28 +14,25 @@ final class DerbyConnection {
 
   DerbyConnection(String dbName) {
     connection = initializeDatabase(dbName);
-    addShutdownHook(dbName);
   }
 
   private Connection initializeDatabase(String dbName) {
+    String dataBaseUrl = "jdbc:derby:" + dbName;
     try {
-      String dataBaseUrl = "jdbc:derby:" + dbName;
       Class.forName(driver).newInstance();
       return DriverManager.getConnection(dataBaseUrl + ";create=true", new Properties());
+    } catch (SQLException e) {
+      throw new MySQLException(e);
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
-  }
-
-  private void addShutdownHook(String dbName) {
-    Runtime.getRuntime().addShutdownHook(new DerbyShutdownThread(dbName));
   }
 
   MyStatement createStatement() {
     try {
       return new MyStatement(connection.createStatement());
     } catch (SQLException e) {
-      throw new RuntimeException(e);
+      throw new MySQLException(e);
     }
   }
 
