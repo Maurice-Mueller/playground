@@ -1,4 +1,4 @@
-package moepad.playground.springdata;
+package moepad.playground.spring.data;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
