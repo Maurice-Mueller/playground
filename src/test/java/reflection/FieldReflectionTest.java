@@ -6,7 +6,7 @@ import java.lang.reflect.Field;
 
 import static org.junit.Assert.assertEquals;
 
-public final class ReflectionTest {
+public final class FieldReflectionTest {
 
   @Test
   public void testGettingPrivateField() throws NoSuchFieldException, IllegalAccessException {
