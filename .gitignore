@@ -1,1 +1,7 @@
 .idea/
+playground.iml
+.gradle/
+gradle/
+gradlew
+gradlew.bat
+build/
