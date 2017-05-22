@@ -7,6 +7,10 @@ public final class ClassForReflection {
   private final String finalString = "my final string";
   private final String stringForGetting = "string get";
 
+  public ClassForReflection() {}
+
+  public ClassForReflection(int i) {}
+
   private String getMyPrivateString() {
     return myPrivateString;
   }
