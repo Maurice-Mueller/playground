@@ -1,13 +1,20 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.time.LocalDate;
+
 public final class UserStandard {
 
+  @JsonProperty
   private String name;
-  private String birthday;
+
+  @JsonProperty
+  private LocalDate birthday;
 
   public UserStandard() {}
 
-  public UserStandard(String name, String birthday) {
+  public UserStandard(String name, LocalDate birthday) {
     this.name = name;
     this.birthday = birthday;
   }
@@ -20,11 +27,11 @@ public final class UserStandard {
     this.name = name;
   }
 
-  public String getBirthday() {
+  public LocalDate getBirthday() {
     return birthday;
   }
 
-  public void setBirthday(String birthday) {
+  public void setBirthday(LocalDate birthday) {
     this.birthday = birthday;
   }
 }
