@@ -5,4 +5,6 @@ repositories {
 }
 
 dependencies {
+    //JUnit
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.0.0-M4'
 }

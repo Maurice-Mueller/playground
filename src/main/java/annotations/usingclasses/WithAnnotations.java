@@ -1,8 +1,8 @@
-package usingclasses;
+package annotations.usingclasses;
 
-import customannotations.CurrentDate;
-import customannotations.SimpleStringAnnotation;
-import customannotations.WithArrayAttribute;
+import annotations.customannotations.CurrentDate;
+import annotations.customannotations.SimpleStringAnnotation;
+import annotations.customannotations.WithArrayAttribute;
 
 import java.time.LocalDate;
 

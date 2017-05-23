@@ -1,4 +1,4 @@
-package customannotations;
+package annotations.customannotations;
 
 public @interface Annotayception {
   ForAnnotayception subAnnotation();

@@ -1,7 +1,7 @@
-package usingclasses;
+package annotations.usingclasses;
 
-import customannotations.Annotayception;
-import customannotations.ForAnnotayception;
+import annotations.customannotations.Annotayception;
+import annotations.customannotations.ForAnnotayception;
 
 @Annotayception(
     subAnnotation = @ForAnnotayception(value = 200),
