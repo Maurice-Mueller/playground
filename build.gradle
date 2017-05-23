@@ -1,0 +1,16 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //Jackson
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.8.8'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.8.8'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.8.1'
+
+    //JUnit
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.0.0-M4'
+    //testRuntime("org.junit.platform:junit-platform-runner:1.0.0-M4")
+}
