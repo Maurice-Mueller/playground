@@ -1,23 +1,35 @@
 package annotations.processor;
 
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.ArrayList;
+import annotations.customannotations.CurrentDate;
+
+import java.lang.reflect.Field;
 import java.util.Arrays;
-import java.util.List;
 
 public class CustomAnnotationProcessor {
   static {
+    Class<?> clazz = loadClass("annotations.usingclasses.WithAnnotations");
+    Arrays.stream(clazz.getDeclaredFields()).forEach(field -> {
+      boolean wasAccessibleBefore = makeFieldAccesible(field);
+      CurrentDate currentDate = field.getAnnotation(CurrentDate.class);
+      if (currentDate != null)
+        System.out.println("Found");
+      field.setAccessible(wasAccessibleBefore);
+    });
+  }
+
+  private static boolean makeFieldAccesible(Field field) {
+    boolean isAccessible = field.isAccessible();
+    if(!isAccessible)
+      field.setAccessible(true);
+    return isAccessible;
+  }
+
+  private static <T> Class<T> loadClass(String className) {
     ClassLoader classLoader = CustomAnnotationProcessor.class.getClassLoader();
-    List<URL> urlList = new ArrayList<>();
-    while(classLoader != null) {
-      if(classLoader instanceof URLClassLoader) {
-        Arrays.stream(((URLClassLoader) classLoader).getURLs())
-            .filter(url -> url.getPath().startsWith("annotations."))
-            .forEach(urlList::add);
-      }
-      classLoader = classLoader.getParent();
+    try {
+     return (Class<T>) classLoader.loadClass(className);
+    } catch (ClassNotFoundException e) {
+      throw new RuntimeException(e);
     }
-    urlList.forEach(System.out::println);
   }
 }
