@@ -9,14 +9,27 @@ sourceSets {
         java {
             exclude "annotations/processor/MyProcessor.java"
         }
+        resources {
+            exclude "META-INF/*"
+        }
     }
     annotationProcessor {
         java {
             srcDir "src/main/java"
-            include "annotations/processor/MyProcessori.java"
+            include "annotations/processor/MyProcessor.java", "annotations/customannotations/*"
             println "output.classesDir = ${output.classesDir}"
             println "allSource.files = ${allSource.files.name}"
         }
+        resources {
+            srcDir "src/main/resources"
+            include "**/*"
+        }
+    }
+}
+
+configurations {
+    annotationProcessorCompile {
+        extendsFrom compile
     }
 }
 
@@ -26,7 +39,7 @@ dependencies {
 }
 
 task createAnnotationProcessorJar(dependsOn: classes, type: Jar) {
-    from sourceSets.annotationProcessor.output.classesDir
-    include '*'
+    from sourceSets.annotationProcessor.output.classesDir, sourceSets.annotationProcessor.resources
+    include '**/*'
     archiveName "MyAnnotationProcessor.jar"
 }
