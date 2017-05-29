@@ -29,6 +29,18 @@ sourceSets {
         }
     }
 }
+//
+//compileAnnotationProcessorJava {
+//    options.fork = true
+//    options.forkOptions.executable = 'javac'
+//    options.compilerArgs << "-XDignore.symbol.file=true"
+//}
+//
+//compileJava {
+//    options.fork = true
+//    options.forkOptions.executable = 'javac'
+//    options.compilerArgs << "-XDignore.symbol.file=true"
+//}
 
 configurations {
     annotationProcessorCompile {
