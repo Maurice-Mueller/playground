@@ -1,0 +1,25 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "gradle.plugin.aspectj:gradle-aspectj:0.1.6"
+    }
+}
+
+ext.aspectjVersion = "1.8.9"
+
+apply plugin: "aspectj.gradle"
+apply plugin: "java"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.aspectj:aspectjrt:1.8.9"
+    compile "org.aspectj:aspectjweaver:1.8.9"
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.0.0-M4'
+}
