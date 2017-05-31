@@ -1,6 +1,5 @@
 package moepad.playground.spring.data;
 
-
 import javax.persistence.*;
 import java.util.Random;
 
