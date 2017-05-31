@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.List;
+
 @RestController
 public class SimpleRestController {
 
@@ -48,5 +50,10 @@ public class SimpleRestController {
   public String userNotKnown(@PathVariable long id) {
     return  "<h2>User with ID " + id + " does not exist.</h2><br>" +
         "<a href='/'>back</a>";
+  }
+
+  @RequestMapping("/requestUser/{surname}")
+  public List<User> findBySurname(@PathVariable String surname) {
+    return userRepository.findBySurname(surname);
   }
 }

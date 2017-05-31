@@ -54,8 +54,8 @@ public class User {
     Random random = new Random();
     User user = new User();
     user.age = random.nextInt();
-    user.firstname = "Nach: " + Double.toString(random.nextDouble());
-    user.surname = "Vor: " + String.valueOf(random.nextDouble());
+    user.firstname = "Vor: " + Double.toString(random.nextDouble());
+    user.surname = "Nach: " + Double.toString(random.nextDouble());
     return user;
   }
 }
