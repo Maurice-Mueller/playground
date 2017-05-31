@@ -27,29 +27,21 @@ public class SimpleRestController {
   @RequestMapping("/createRandomUser")
   public ModelAndView createRandomUser() {
     userRepository.save(User.createRandom());
-    ModelMap model = new ModelMap();
-    return new ModelAndView(
-        new RedirectView("/", true),
-        model
-    );
+    return switchView("/");
   }
 
   @RequestMapping("/delete/{id}")
   public ModelAndView deleteUser(@PathVariable(value = "id") long id) {
-    try {
-      userRepository.delete(id);
-    } catch (org.springframework.dao.EmptyResultDataAccessException e) {
-      ModelMap model = new ModelMap();
-      return new ModelAndView(
-          new RedirectView("/userDoesNotExist/" + id, true),
-          model
-      );
+    if(!userRepository.exists(id)) {
+      return switchView("/userDoesNotExist/" + id);
     }
-    ModelMap model = new ModelMap();
-    return new ModelAndView(
-        new RedirectView("/queryAllUsers", true),
-        model
-    );
+    userRepository.delete(id);
+    return switchView("/queryAllUsers");
+  }
+
+  private ModelAndView switchView(String url) {
+    ModelMap modelMap = new ModelMap();
+    return new ModelAndView(new RedirectView(url, true), modelMap);
   }
 
   @RequestMapping("/userDoesNotExist/{id}")
