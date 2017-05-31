@@ -2,6 +2,7 @@ package moepad.playground.spring.data;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,5 +32,29 @@ public class SimpleRestController {
         new RedirectView("/", true),
         model
     );
+  }
+
+  @RequestMapping("/delete/{id}")
+  public ModelAndView deleteUser(@PathVariable(value = "id") long id) {
+    try {
+      userRepository.delete(id);
+    } catch (org.springframework.dao.EmptyResultDataAccessException e) {
+      ModelMap model = new ModelMap();
+      return new ModelAndView(
+          new RedirectView("/userDoesNotExist/" + id, true),
+          model
+      );
+    }
+    ModelMap model = new ModelMap();
+    return new ModelAndView(
+        new RedirectView("/queryAllUsers", true),
+        model
+    );
+  }
+
+  @RequestMapping("/userDoesNotExist/{id}")
+  public String userNotKnown(@PathVariable long id) {
+    return  "<h2>User with ID " + id + " does not exist.</h2><br>" +
+        "<a href='/'>back</a>";
   }
 }
