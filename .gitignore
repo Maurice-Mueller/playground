@@ -8,3 +8,4 @@ build/
 playground.ipr
 playground.iws
 node_modules/
+dist/
