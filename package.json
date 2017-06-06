@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/MoePad/playground/issues"
   },
-  "homepage": "https://github.com/MoePad/playground#readme"
+  "homepage": "https://github.com/MoePad/playground#readme",
+  "devDependencies": {
+    "webpack": "^2.6.1"
+  }
 }
