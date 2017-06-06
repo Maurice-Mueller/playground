@@ -19,5 +19,8 @@
   "homepage": "https://github.com/MoePad/playground#readme",
   "devDependencies": {
     "webpack": "^2.6.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
   }
 }
