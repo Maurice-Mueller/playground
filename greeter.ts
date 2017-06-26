@@ -4,7 +4,7 @@ function greeter(person: string) {
 
 var user = "Jane User"
 
-document.body.innerHTML = greeter(user)
+greeter(user)
 
 interface Person {
     firstName: string
@@ -17,4 +17,21 @@ function greetInterface(person: Person) {
 
 var interfaceUser = {firstName: "jane", lastName: "user"}
 
-document.body.innerHTML = greetInterface(interfaceUser)
+greetInterface(interfaceUser)
+
+class Student {
+    fullName: string
+    constructor(public firstName, public lastName) {
+        this.fullName = firstName + ' ' + lastName
+    }
+}
+
+var student = new Student("Jane", "User")
+
+greetInterface(student)
+
+function greetStudent(student: Student) {
+    return "Hello " + student.fullName
+}
+
+greetStudent(student)
